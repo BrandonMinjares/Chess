@@ -5,6 +5,9 @@ class Board:
 	def start(self):
 		print('hello')
 
+	def initializeBoard(self):
+		pass
+
 	def printBoard(self):
 		for row in self.board:
 			print(" ".join(row))
