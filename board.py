@@ -13,7 +13,7 @@ class Board:
 		print('hello')
 
 	def initializeBoard(self):
-		for x in range(1, 8):
+		for x in range(0, 8):
 			self.board[1][x] = Pawn("Pawn", "white", [1, x])
 
 		self.board[0][0] = Rook("Rook", "white", [0, 0])
@@ -25,7 +25,7 @@ class Board:
 		self.board[0][6] = Knight("Knight", "white", [0, 6])
 		self.board[0][7] = Rook("Rook", "white", [1, 7])
 
-		for x in range(1, 8):
+		for x in range(0, 8):
 			self.board[6][x] = Pawn("Pawn", "black", [9, x])
 
 		self.board[7][0] = Rook("Rook", "black", [7, 0])
@@ -38,13 +38,23 @@ class Board:
 		self.board[7][7] = Rook("Rook", "black", [7, 7])
 
 	def printBoard(self):
-		for row in self.board:
-			print(" ".join(row))
+		for i, row in enumerate(self.board):
+			print(f"{8 - i} | {' '.join(self.get_piece_symbol(piece) for piece in row)} |")
 
 	def get_piece_symbol(self, piece):
 		if piece is None:
 			return '.'
 		elif isinstance(piece, Pawn):
 			return 'p' if piece.color == 'black' else 'P'
+		elif isinstance(piece, Rook):
+			return 'r' if piece.color == 'black' else 'R'
 		elif isinstance(piece, Knight):
 			return 'n' if piece.color == 'black' else 'N'
+		elif isinstance(piece, Bishop):
+			return 'b' if piece.color == 'black' else 'B'
+		elif isinstance(piece, Queen):
+			return 'q' if piece.color == 'black' else 'Q'
+		elif isinstance(piece, King):
+			return 'k' if piece.color == 'black' else 'K'
+		else:
+			return '.'
