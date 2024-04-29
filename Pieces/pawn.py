@@ -2,7 +2,6 @@ from piece import Piece
 
 class Pawn(Piece):
 	def __init__(self, name, color, position):
-		self.moves = []
 		super().__init__(name = name, color=color, position = position)
 
 	def move(self, new_position):
@@ -18,30 +17,24 @@ class Pawn(Piece):
 		pass
 
 	def allowableMoves(self):
+		moves = []
 		x, y = self.getPosition()
 		
-		if self.color == "black":
+		if self.color == "white":
 			# square is less than edge of board
 			# need to check if square is free though
-			if y < 7:
-				self.moves.append([x, y + 1])
-
+			if self.hasMoved == False:
+				moves.append([x + 2, y])
 			if x < 7:
-				self.moves.append([x + 1, y + 1])
+				moves.append([x + 1, y])
 
-			if x > 0:
-				self.moves.append([x - 1, y + 1])
-
-		else:
-			if y > 7:
-				self.moves.append([x, y - 1])
-
-			if x < 7:
-				self.moves.append([x + 1, y - 1])
-
-			if x > 0:
-				self.moves.append([x - 1, y - 1])
-
+				# capture enemy piece
+				if y < 7: 
+					moves.append([x + 1, y + 1])
+				if y > 0:
+					moves.append([x + 1, y - 1])
+			
+		return moves
 	
 	def printName(self):
 		print(f"Piece: {self.name}, Color: {self.color}, Position: {self.position}")
