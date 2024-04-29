@@ -3,9 +3,15 @@ class Piece:
 		self.color = color
 		self.position = position
 		self.active = True
+		self.hasMoved = False
 
 	def move(self, new_position):
+		# piece has moved from initial position
+		if self.hasMoved == False: self.hasMoved = True
+
 		self.position = new_position
+
+
 
 	# has the piece been captured
 	def active(self):
