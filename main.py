@@ -1,5 +1,5 @@
 from board import Board
-from pawn import Pawn
+from Pieces.pawn import Pawn
 
 def main():
 	obj = Board()
