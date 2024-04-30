@@ -1,9 +1,10 @@
 from piece import Piece
 
 class Bishop(Piece):
-	def __init__(self, name, color, position):
+	def __init__(self, color, position):
 		self.moves = []
-		super().__init__(name = name, color=color, position = position)
+		self.name = "Bishop"
+		super().__init__(color=color, position = position)
 
 	def move(self, new_position):
 		# piece has moved from initial position

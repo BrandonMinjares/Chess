@@ -10,7 +10,7 @@ class Board:
 		self.board = [["-" for _ in range(8)] for _ in range(8)]
 	
 	def start(self):
-		print('hello')
+		print('Start game')
 
 	def initializeBoard(self):
 		for x in range(0, 8):
