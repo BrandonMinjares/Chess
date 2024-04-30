@@ -1,8 +1,10 @@
 from piece import Piece
 
 class Pawn(Piece):
-	def __init__(self, name, color, position):
-		super().__init__(name = name, color=color, position = position)
+	def __init__(self, color, position):
+		self.moves = []
+		self.name = "Pawn"
+		super().__init__(color=color, position = position)
 
 	def move(self, new_position):
 		# piece has moved from initial position
@@ -33,7 +35,6 @@ class Pawn(Piece):
 					moves.append([x + 1, y + 1])
 				if y > 0:
 					moves.append([x + 1, y - 1])
-			
 		return moves
 	
 	def printName(self):
