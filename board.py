@@ -5,7 +5,7 @@ from Pieces.knight import Knight
 from Pieces.queen import Queen
 from Pieces.king import King
 
-class Board:
+class Board():
 	def __init__(self):
 		self.board = [["-" for _ in range(8)] for _ in range(8)]
 	
@@ -13,29 +13,29 @@ class Board:
 		print('Start game')
 
 	def initializeBoard(self):
-		for x in range(0, 8):
-			self.board[1][x] = Pawn("white", [1, x])
+        # Set up white pieces
+		self.board[0][0] = self.players['white'].get_pieces()['rooks'][0]
+		self.board[0][1] = self.players['white'].get_pieces()['knights'][0]
+		self.board[0][2] = self.players['white'].get_pieces()['bishops'][0]
+		self.board[0][3] = self.players['white'].get_pieces()['queen']
+		self.board[0][4] = self.players['white'].get_pieces()['king']
+		self.board[0][5] = self.players['white'].get_pieces()['bishops'][1]
+		self.board[0][6] = self.players['white'].get_pieces()['knights'][1]
+		self.board[0][7] = self.players['white'].get_pieces()['rooks'][1]
+		for i in range(8):
+			self.board[1][i] = self.players['white'].get_pieces()['pawns'][i]
 
-		self.board[0][0] = Rook("white", [0, 0])
-		self.board[0][1] = Knight("white", [0, 1])
-		self.board[0][2] = Bishop("white", [0, 2])
-		self.board[0][3] = Queen("white", [0, 3])
-		self.board[0][4] = King("white", [0, 4])
-		self.board[0][5] = Bishop("white", [0, 5])
-		self.board[0][6] = Knight("white", [0, 6])
-		self.board[0][7] = Rook("white", [1, 7])
-
-		for x in range(0, 8):
-			self.board[6][x] = Pawn("black", [9, x])
-
-		self.board[7][0] = Rook("black", [7, 0])
-		self.board[7][1] = Knight("black", [7, 1])
-		self.board[7][2] = Bishop("black", [7, 2])
-		self.board[7][3] = Queen("black", [7, 3])
-		self.board[7][4] = King("black", [7, 4])
-		self.board[7][5] = Bishop("black", [7, 5])
-		self.board[7][6] = Knight("black", [7, 6])
-		self.board[7][7] = Rook("black", [7, 7])
+		# Set up black pieces
+		self.board[7][0] = self.players['black'].get_pieces()['rooks'][0]
+		self.board[7][1] = self.players['black'].get_pieces()['knights'][0]
+		self.board[7][2] = self.players['black'].get_pieces()['bishops'][0]
+		self.board[7][3] = self.players['black'].get_pieces()['queen']
+		self.board[7][4] = self.players['black'].get_pieces()['king']
+		self.board[7][5] = self.players['black'].get_pieces()['bishops'][1]
+		self.board[7][6] = self.players['black'].get_pieces()['knights'][1]
+		self.board[7][7] = self.players['black'].get_pieces()['rooks'][1]
+		for i in range(8):
+			self.board[6][i] = self.players['black'].get_pieces()['pawns'][i]
 
 	def printBoard(self):
 		for i, row in enumerate(self.board):
